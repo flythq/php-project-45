@@ -5,5 +5,11 @@
             "Hexlet\\Code\\": "src/"
         }
     },
+    "authors": [
+        {
+            "name": "Andrey Nikolaenkov",
+            "email": "nichexplore@gmail.com"
+        }
+    ],
     "require": {}
 }
