@@ -1,6 +1,9 @@
 {
-    "name": "hexlet/code",
-    "autoload": {
+  "name": "hexlet/code",
+  "description": "A collection of brain training games fo Hexlet projects",
+  "license": ["MIT"],
+
+  "autoload": {
         "psr-4": {
             "Hexlet\\Code\\": "src/"
         }
@@ -11,5 +14,8 @@
             "email": "nichexplore@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "bin": [
+    "bin/brain-games"
+  ]
 }
