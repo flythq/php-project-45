@@ -1,21 +1,29 @@
 {
   "name": "hexlet/code",
   "description": "A collection of brain training games fo Hexlet projects",
-  "license": ["MIT"],
-
+  "license": [
+    "MIT"
+  ],
   "autoload": {
-        "psr-4": {
-            "Hexlet\\Code\\": "src/"
-        }
+    "psr-4": {
+      "Hexlet\\Code\\": "src/"
     },
-    "authors": [
-        {
-            "name": "Andrey Nikolaenkov",
-            "email": "nichexplore@gmail.com"
-        }
-    ],
-    "require": {},
-    "bin": [
-    "bin/brain-games"
+    "files": [
+      "src/Cli.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Andrey Nikolaenkov",
+      "email": "nichexplore@gmail.com"
+    }
+  ],
+  "require": {
+    "wp-cli/php-cli-tools": "^0.12.6",
+    "squizlabs/php_codesniffer": "^4.0"
+  },
+  "bin": [
+    "bin/brain-games",
+    "bin/brain-even"
   ]
 }

@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+
+<?php
+
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+use function cli\prompt;
+use function cli\line;
+
+$name = \BrainGames\Cli\hello();
+line("Answer 'yes' if the number is even, otherwise answer 'no'.");
+
+for ($i = 0; $i < 3; $i++) {
+
+    $num = random_int(1, 100);
+    $even = ($num % 2 === 0);
+    ($even === true) ? $correct = "yes" : $correct = "no";
+
+    line("Question: $num");
+    $answer = prompt("Your answer");
+    if ($correct === $answer) {
+        echo "Correct!\n";
+    } else {
+        line("'$answer' is wrong answer ;(. Correct answer was '$correct'.");
+        line("Let's try again, $name!");
+        exit();
+    }
+}
+line("Congratulations, $name!\n");
