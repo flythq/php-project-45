@@ -9,7 +9,7 @@ use const BrainGames\Engine\MAX_FOR_RAND;
 function getGameData(): array
 {
     $rounds = [];
-    $desc = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    $desc = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $num = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
