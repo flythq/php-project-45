@@ -2,29 +2,29 @@
 
 namespace BrainGames\Games\Calc;
 
-use const BrainGames\Engine\ROUNDS;
+use const BrainGames\Engine\MIN_FOR_RAND;
+use const BrainGames\Engine\ROUNDS_COUNT;
+use const BrainGames\Engine\MAX_FOR_RAND;
 
-function getData() : array
+function getGameData(): array
 {
     $rounds = [];
     $desc = 'What is the result of the expression?';
-    $operations = ['+', '-', '*'];
+    $operators = ['+', '-', '*'];
 
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $num1 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num2 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $randomKey = array_rand($operators);
+        $operator = $operators[$randomKey];
 
-    for ($i = 0; $i < ROUNDS; $i++) {
-        $num1 = rand(1, 100);
-        $num2 = rand(1, 100);
-        $randomKey = array_rand($operations);
-        $operation = $operations[$randomKey];
-
-
-        $answer = match ($operation) {
+        $answer = match ($operator) {
             "+" => $num1 + $num2,
             "-" => $num1 - $num2,
             "*" => $num1 * $num2,
         };
 
-        $rounds[$i]['question'] = "$num1 $operation $num2";
+        $rounds[$i]['question'] = "$num1 $operator $num2";
         $rounds[$i]['rightAnswer'] = (string)$answer;
     }
     return [

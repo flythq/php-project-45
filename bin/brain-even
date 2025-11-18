@@ -10,5 +10,5 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$gameData = \BrainGames\Games\Even\getData();
-\BrainGames\Engine\playGame($gameData['desc'], $gameData['rounds']);
+$gameData = \BrainGames\Games\Even\getGameData();
+\BrainGames\Engine\runGame($gameData['desc'], $gameData['rounds']);

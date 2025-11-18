@@ -2,32 +2,26 @@
 
 namespace BrainGames\Games\Gcd;
 
-use const BrainGames\Engine\ROUNDS;
+use const BrainGames\Engine\MIN_FOR_RAND;
+use const BrainGames\Engine\ROUNDS_COUNT;
+use const BrainGames\Engine\MAX_FOR_RAND;
 
-/**
- * Наибольший общий делитель.
- * @param int $a
- * @param int $b
- * @return int
- */
-function gcd(int $a, int $b): int
+function getGcd(int $a, int $b): int
 {
     if ($b === 0) {
         return $a;
     }
-    return gcd($b, $a % $b);
+    return getGcd($b, $a % $b);
 }
-function getData (): array
+function getGameData(): array
 {
-
     $rounds = [];
     $desc = "Find the greatest common divisor of given numbers.";
 
-    for ($i = 0; $i < ROUNDS; $i++) {
-
-        $num1 = rand(1, 100);
-        $num2 = rand(1, 100);
-        $answer = gcd($num1, $num2);
+    for ($i = 0; $i < ROUNDS_COUNT; $i++) {
+        $num1 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num2 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $answer = getGcd($num1, $num2);
 
         $rounds[$i]['question'] = "$num1 $num2";
         $rounds[$i]['rightAnswer'] = (string)$answer;

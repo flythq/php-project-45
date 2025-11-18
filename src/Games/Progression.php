@@ -2,27 +2,34 @@
 
 namespace BrainGames\Games\Progression;
 
-use const BrainGames\Engine\ROUNDS;
+use const BrainGames\Engine\MIN_FOR_RAND;
+use const BrainGames\Engine\ROUNDS_COUNT;
+use const BrainGames\Engine\MAX_FOR_RAND;
 
-function getProgression(int $start, int $step, int $len = 5): array
+const MAX_FOR_PROGRESSION_START = 20;
+const MAX_FOR_PROGRESSION_STEP = 10;
+const MIN_FOR_PROGRESSION_LEN = 5;
+const MAX_FOR_PROGRESSION_LEN = 10;
+
+function getProgression(int $start, int $step, int $len): array
 {
     $result = [];
+
     for ($i = 1; $i <= $len; $i++) {
-        $result[] = $start + $i * $step;
+        $result[] = $start + ($i * $step);
     }
     return $result;
 }
 
-function getData (): array
+function getGameData(): array
 {
     $rounds = [];
     $desc = "What number is missing in the progression?";
 
-    for ($i = 0; $i < ROUNDS; $i++) {
-
-        $start = rand(1, 20);
-        $step = rand(1, 10);
-        $len = rand(5, 10);
+    for ($i = 0; $i < NUMBER_OF_ROUNDS; $i++) {
+        $start = rand(MIN_FOR_RAND, MAX_FOR_PROGRESSION_START);
+        $step = rand(MIN_FOR_RAND, MAX_FOR_PROGRESSION_STEP);
+        $len = rand(MIN_FOR_PROGRESSION_LEN, MAX_FOR_PROGRESSION_LEN);
 
         $progression = getProgression($start, $step, $len);
         $index = array_rand($progression);
