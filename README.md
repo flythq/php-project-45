@@ -37,35 +37,35 @@ make install
 
 ## Usage
 
-### Calculator
+**Calculator**
 ```bash
 make brain-calc
 ```
 Example:
 [![asciicast](https://asciinema.org/a/W8IIhjjQd9iuib2VyOANpNa2u.svg)](https://asciinema.org/a/W8IIhjjQd9iuib2VyOANpNa2u)
 
-### Progression
+**Progression**
 ```bash
 make brain-progression
 ```
 Example:
 [![asciicast](https://asciinema.org/a/l08y2JZxLsGt0Y5rh3YlwCbbn.svg)](https://asciinema.org/a/l08y2JZxLsGt0Y5rh3YlwCbbn)
 
-### Determining an even number
+**Determining an even number**
 ```bash
 make brain-even
 ```
 Example:
 [![asciicast](https://asciinema.org/a/w2sGnDyUdtfhnCUN4iBY8pDaa.svg)](https://asciinema.org/a/w2sGnDyUdtfhnCUN4iBY8pDaa)
 
-### Determining the greatest common divisor
+**Determining the greatest common divisor**
 ```bash
 make brain-gcn
 ```
 Example:
 [![asciicast](https://asciinema.org/a/PFgOpHwZUCXMoRvuCBCKTWAsc.svg)](https://asciinema.org/a/PFgOpHwZUCXMoRvuCBCKTWAsc)
 
-### Determining a prime number
+**Determining a prime number**
 ```bash
 make brain-prime
 ```
