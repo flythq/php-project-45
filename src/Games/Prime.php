@@ -29,7 +29,7 @@ function isPrime(int $num): bool
 function getGameData(): array
 {
     $rounds = [];
-    $desc = 'Answer "yes" if given number is prime. Otherwise answer "no"';
+    $desc = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $num = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
