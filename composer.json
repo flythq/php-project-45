@@ -35,5 +35,8 @@
     "bin/brain-gcd",
     "bin/brain-progression",
     "bin/brain-prime"
-  ]
+  ],
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
 }
