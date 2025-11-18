@@ -13,8 +13,8 @@ function getGameData(): array
     $operators = ['+', '-', '*'];
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $num1 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
-        $num2 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num1 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num2 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
         $randomKey = array_rand($operators);
         $operator = $operators[$randomKey];
 

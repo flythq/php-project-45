@@ -27,9 +27,9 @@ function getGameData(): array
     $desc = "What number is missing in the progression?";
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $start = rand(MIN_FOR_RAND, MAX_FOR_PROGRESSION_START);
-        $step = rand(MIN_FOR_RAND, MAX_FOR_PROGRESSION_STEP);
-        $len = rand(MIN_FOR_PROGRESSION_LEN, MAX_FOR_PROGRESSION_LEN);
+        $start = random_int(MIN_FOR_RAND, MAX_FOR_PROGRESSION_START);
+        $step = random_int(MIN_FOR_RAND, MAX_FOR_PROGRESSION_STEP);
+        $len = random_int(MIN_FOR_PROGRESSION_LEN, MAX_FOR_PROGRESSION_LEN);
 
         $progression = getProgression($start, $step, $len);
         $index = array_rand($progression);

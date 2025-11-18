@@ -19,8 +19,8 @@ function getGameData(): array
     $desc = "Find the greatest common divisor of given numbers.";
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $num1 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
-        $num2 = rand(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num1 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
+        $num2 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
         $answer = getGcd($num1, $num2);
 
         $rounds[$i]['question'] = "$num1 $num2";
