@@ -1,12 +1,29 @@
 <?php
 
+/**
+ * "Калькулятор"
+ */
+
 namespace BrainGames\Games\Calc;
 
-use const BrainGames\Engine\MIN_FOR_RAND;
-use const BrainGames\Engine\ROUNDS_COUNT;
-use const BrainGames\Engine\MAX_FOR_RAND;
+use function BrainGames\Engine\render;
 
-function getGameData(): array
+use const BrainGames\AppConstants\ROUNDS_COUNT;
+use const BrainGames\AppConstants\MIN_FOR_RAND;
+use const BrainGames\AppConstants\MAX_FOR_RAND;
+
+/**
+ * Запускает "Калькулятор"
+ *
+ * Пользователю показывается случайное математическое выражение, например 35 + 16,
+ * которое нужно вычислить и записать правильный ответ.
+ * Числа и оператор выбираются случайным образом.
+ * Реализованы операторы: +, -, *
+ * Игра продолжается до завершения всех раундов или первой ошибки.
+ *
+ * @return void
+ */
+function run(): void
 {
     $rounds = [];
     $desc = 'What is the result of the expression?';
@@ -15,20 +32,34 @@ function getGameData(): array
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $num1 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
         $num2 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
-        $randomKey = array_rand($operators);
-        $operator = $operators[$randomKey];
+        $operator = $operators[array_rand($operators)];
 
-        $answer = match ($operator) {
-            "+" => $num1 + $num2,
-            "-" => $num1 - $num2,
-            "*" => $num1 * $num2,
-        };
+        $answer = calculate($num1, $num2, $operator);
 
         $rounds[$i]['question'] = "$num1 $operator $num2";
         $rounds[$i]['rightAnswer'] = (string)$answer;
     }
-    return [
-        'desc' => $desc,
-        'rounds' => $rounds,
-    ];
+
+    render($desc, $rounds);
+}
+
+/**
+ * Вычисляет результат арифметической операции
+ *
+ * Выполняет базовые арифметические операции: сложение, вычитание, умножение.
+ * Возвращает null для неизвестных операторов.
+ *
+ * @param int $a Первый операнд
+ * @param int $b Второй операнд
+ * @param string $operator Арифметический оператор (+, -, *)
+ * @return int|null Результат вычисления или null для неизвестного оператора
+ */
+function calculate(int $a, int $b, string $operator): ?int
+{
+    return match ($operator) {
+        "+" => $a + $b,
+        "-" => $a - $b,
+        "*" => $a * $b,
+        default => null,
+    };
 }

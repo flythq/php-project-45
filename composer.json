@@ -5,11 +5,9 @@
     "MIT"
   ],
   "autoload": {
-    "psr-4": {
-      "Hexlet\\Code\\": "src/"
-    },
     "files": [
       "src/Cli.php",
+      "src/AppConstants.php",
       "src/Engine.php",
       "src/Games/Even.php",
       "src/Games/Calc.php",
@@ -28,6 +26,9 @@
     "wp-cli/php-cli-tools": "^0.12.6",
     "squizlabs/php_codesniffer": "^4.0"
   },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
   "bin": [
     "bin/brain-games",
     "bin/brain-even",
@@ -35,8 +36,5 @@
     "bin/brain-gcd",
     "bin/brain-progression",
     "bin/brain-prime"
-  ],
-  "require-dev": {
-    "roave/security-advisories": "dev-latest"
-  }
+  ]
 }
