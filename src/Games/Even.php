@@ -44,7 +44,7 @@ function run(): void
  * @param string $num Проверяемое число
  * @return bool true - если четное, false - если нечетное
  */
-function isEven(string $num): bool
+function isEven(int $num): bool
 {
     return $num % 2 === 0;
 }
