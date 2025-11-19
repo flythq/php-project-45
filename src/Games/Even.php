@@ -41,7 +41,7 @@ function run(): void
 /**
  * Проверяет, является ли число четным
  *
- * @param string $num Проверяемое число
+ * @param int $num Проверяемое число
  * @return bool true - если четное, false - если нечетное
  */
 function isEven(int $num): bool
