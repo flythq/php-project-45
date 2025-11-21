@@ -6,11 +6,12 @@
 
 namespace BrainGames\Games\Even;
 
-use function BrainGames\Engine\render;
+const EVEN_MIN_FOR_RAND = 1;
+const EVEN_MAX_FOR_RAND = 100;
 
-use const BrainGames\AppConstants\ROUNDS_COUNT;
-use const BrainGames\AppConstants\MIN_FOR_RAND;
-use const BrainGames\AppConstants\MAX_FOR_RAND;
+use function BrainGames\Engine\runGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 /**
  * Запускает "Проверку на четность"
@@ -24,18 +25,20 @@ use const BrainGames\AppConstants\MAX_FOR_RAND;
 function run(): void
 {
     $rounds = [];
-    $desc = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $num = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
+        $randomInteger = random_int(EVEN_MIN_FOR_RAND, EVEN_MAX_FOR_RAND);
 
-        isEven($num) ? $correct = "yes" : $correct = "no";
+        $answer = isEven($randomInteger) ? 'yes' : 'no';
 
-        $rounds[$i]['question'] = $num;
-        $rounds[$i]['rightAnswer'] = $correct;
+        $rounds[] = [
+            'question' => (string)$randomInteger,
+            'rightAnswer' => $answer
+        ];
     }
 
-    render($desc, $rounds);
+    runGame($description, $rounds);
 }
 
 /**
@@ -44,7 +47,7 @@ function run(): void
  * @param int $num Проверяемое число
  * @return bool true - если четное, false - если нечетное
  */
-function isEven(int $num): bool
+function isEven(int $number): bool
 {
-    return $num % 2 === 0;
+    return $number % 2 === 0;
 }

@@ -6,11 +6,14 @@
 
 namespace BrainGames\Games\Calc;
 
-use function BrainGames\Engine\render;
+const CALC_MIN_FOR_RAND = 1;
+const CALC_MAX_FOR_RAND = 100;
+const  CALC_ALLOWED_OPERATORS = ['+', '-', '*'];
 
-use const BrainGames\AppConstants\ROUNDS_COUNT;
-use const BrainGames\AppConstants\MIN_FOR_RAND;
-use const BrainGames\AppConstants\MAX_FOR_RAND;
+use function BrainGames\Engine\runGame;
+
+use function cli\line;
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 /**
  * Запускает "Калькулятор"
@@ -26,21 +29,23 @@ use const BrainGames\AppConstants\MAX_FOR_RAND;
 function run(): void
 {
     $rounds = [];
-    $desc = 'What is the result of the expression?';
-    $operators = ['+', '-', '*'];
+    $description = 'What is the result of the expression?';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $num1 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
-        $num2 = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
-        $operator = $operators[array_rand($operators)];
+        $randomInteger1 = random_int(CALC_MIN_FOR_RAND, CALC_MAX_FOR_RAND);
+        $randomInteger2 = random_int(CALC_MIN_FOR_RAND, CALC_MAX_FOR_RAND);
+        $randomIndex = array_rand(CALC_ALLOWED_OPERATORS);
+        $randomOperator = CALC_ALLOWED_OPERATORS[$randomIndex];
 
-        $answer = calculate($num1, $num2, $operator);
+        $answer = calculate($randomInteger1, $randomInteger2, $randomOperator);
 
-        $rounds[$i]['question'] = "$num1 $operator $num2";
-        $rounds[$i]['rightAnswer'] = (string)$answer;
+        $rounds[] = [
+            'question' => "$randomInteger1 $randomOperator $randomInteger2",
+            'rightAnswer' => (string)$answer,
+        ];
     }
 
-    render($desc, $rounds);
+    runGame($description, $rounds);
 }
 
 /**
@@ -52,14 +57,14 @@ function run(): void
  * @param int $a Первый операнд
  * @param int $b Второй операнд
  * @param string $operator Арифметический оператор (+, -, *)
- * @return int|null Результат вычисления или null для неизвестного оператора
+ * @return int Результат вычисления или null для неизвестного оператора
  */
-function calculate(int $a, int $b, string $operator): ?int
+function calculate(int $a, int $b, string $operator): int
 {
     return match ($operator) {
         "+" => $a + $b,
         "-" => $a - $b,
         "*" => $a * $b,
-        default => null,
+        default => exit("Error: Unknown operator '$operator'\n"),
     };
 }

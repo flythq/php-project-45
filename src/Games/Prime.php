@@ -6,11 +6,12 @@
 
 namespace BrainGames\Games\Prime;
 
-use function BrainGames\Engine\render;
+const PRIME_MIN_FOR_RAND = 1;
+const PRIME_MAX_FOR_RAND = 100;
 
-use const BrainGames\AppConstants\ROUNDS_COUNT;
-use const BrainGames\AppConstants\MIN_FOR_RAND;
-use const BrainGames\AppConstants\MAX_FOR_RAND;
+use function BrainGames\Engine\runGame;
+
+use const BrainGames\Engine\ROUNDS_COUNT;
 
 /**
  * Пользователю показывается случайное число. И ему нужно ответить yes,
@@ -23,42 +24,44 @@ use const BrainGames\AppConstants\MAX_FOR_RAND;
 function run(): void
 {
     $rounds = [];
-    $desc = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
-        $num = random_int(MIN_FOR_RAND, MAX_FOR_RAND);
+        $randomInteger = random_int(PRIME_MIN_FOR_RAND, PRIME_MAX_FOR_RAND);
 
-        $answer = isPrime($num) ? 'yes' : 'no';
+        $answer = isPrime($randomInteger) ? 'yes' : 'no';
 
-        $rounds[$i]['question'] = (string)$num;
-        $rounds[$i]['rightAnswer'] = $answer;
+        $rounds[] = [
+            'question' => (string)$randomInteger,
+            'rightAnswer' => $answer
+        ];
     }
 
-    render($desc, $rounds);
+    runGame($description, $rounds);
 }
 
 /**
  * Проверяет, является ли число простым
  *
- * @param int $num Проверяемое число
+ * @param int $number Проверяемое число
  * @return bool true - если число простое иначе false
  */
-function isPrime(int $num): bool
+function isPrime(int $number): bool
 {
-    if ($num < 2) {
+    if ($number < 2) {
         return false;
     }
 
-    if ($num === 2) {
+    if ($number === 2) {
         return true;
     }
 
-    if ($num % 2 === 0) {
+    if ($number % 2 === 0) {
         return false;
     }
 
-    for ($i = 3; $i <= sqrt($num); $i += 2) {
-        if ($num % $i === 0) {
+    for ($i = 3; $i <= sqrt($number); $i += 2) {
+        if ($number % $i === 0) {
             return false;
         }
     }

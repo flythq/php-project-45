@@ -7,7 +7,6 @@
   "autoload": {
     "files": [
       "src/Cli.php",
-      "src/AppConstants.php",
       "src/Engine.php",
       "src/Games/Even.php",
       "src/Games/Calc.php",
