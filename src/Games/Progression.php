@@ -12,6 +12,7 @@ const PROGRESSION_MIN_STEP = 1;
 const PROGRESSION_MAX_STEP = 10;
 const PROGRESSION_MIN_LENGTH = 5;
 const PROGRESSION_MAX_LENGTH = 10;
+const PROGRESSION_DESCRIPTION = 'What number is missing in the progression?';
 
 use function BrainGames\Engine\runGame;
 
@@ -29,7 +30,6 @@ use const BrainGames\Engine\ROUNDS_COUNT;
 function run(): void
 {
     $rounds = [];
-    $description = "What number is missing in the progression?";
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $start = random_int(PROGRESSION_MIN_START, PROGRESSION_MAX_START);
@@ -48,7 +48,7 @@ function run(): void
         ];
     }
 
-    runGame($description, $rounds);
+    runGame(PROGRESSION_DESCRIPTION, $rounds);
 }
 
 /**

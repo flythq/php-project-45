@@ -8,6 +8,7 @@ namespace BrainGames\Games\Gcd;
 
 const GCD_MIN_FOR_RAND = 1;
 const GCD_MAX_FOR_RAND = 100;
+const GCD_DESCRIPTION = 'Find the greatest common divisor of given numbers.';
 
 use function BrainGames\Engine\runGame;
 
@@ -25,7 +26,6 @@ use const BrainGames\Engine\ROUNDS_COUNT;
 function run(): void
 {
     $rounds = [];
-    $description = "Find the greatest common divisor of given numbers.";
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomInteger1 = random_int(GCD_MIN_FOR_RAND, GCD_MAX_FOR_RAND);
@@ -39,7 +39,7 @@ function run(): void
         ];
     }
 
-    runGame($description, $rounds);
+    runGame(GCD_DESCRIPTION, $rounds);
 }
 
 /**

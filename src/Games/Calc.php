@@ -9,6 +9,7 @@ namespace BrainGames\Games\Calc;
 const CALC_MIN_FOR_RAND = 1;
 const CALC_MAX_FOR_RAND = 100;
 const  CALC_ALLOWED_OPERATORS = ['+', '-', '*'];
+const CALC_DESCRIPTION = 'What is the result of the expression?';
 
 use function BrainGames\Engine\runGame;
 
@@ -29,7 +30,6 @@ use const BrainGames\Engine\ROUNDS_COUNT;
 function run(): void
 {
     $rounds = [];
-    $description = 'What is the result of the expression?';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomInteger1 = random_int(CALC_MIN_FOR_RAND, CALC_MAX_FOR_RAND);
@@ -45,7 +45,7 @@ function run(): void
         ];
     }
 
-    runGame($description, $rounds);
+    runGame(CALC_DESCRIPTION, $rounds);
 }
 
 /**
@@ -65,6 +65,6 @@ function calculate(int $a, int $b, string $operator): int
         "+" => $a + $b,
         "-" => $a - $b,
         "*" => $a * $b,
-        default => exit("Error: Unknown operator '$operator'\n"),
+        default => die("Error: Unknown operator '$operator'\n"),
     };
 }

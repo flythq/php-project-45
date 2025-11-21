@@ -8,6 +8,7 @@ namespace BrainGames\Games\Prime;
 
 const PRIME_MIN_FOR_RAND = 1;
 const PRIME_MAX_FOR_RAND = 100;
+const PRIME_DESCRIPTION = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 use function BrainGames\Engine\runGame;
 
@@ -24,7 +25,6 @@ use const BrainGames\Engine\ROUNDS_COUNT;
 function run(): void
 {
     $rounds = [];
-    $description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomInteger = random_int(PRIME_MIN_FOR_RAND, PRIME_MAX_FOR_RAND);
@@ -37,7 +37,7 @@ function run(): void
         ];
     }
 
-    runGame($description, $rounds);
+    runGame(PRIME_DESCRIPTION, $rounds);
 }
 
 /**

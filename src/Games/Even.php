@@ -8,6 +8,7 @@ namespace BrainGames\Games\Even;
 
 const EVEN_MIN_FOR_RAND = 1;
 const EVEN_MAX_FOR_RAND = 100;
+const EVEN_DESCRIPTION = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 use function BrainGames\Engine\runGame;
 
@@ -25,7 +26,6 @@ use const BrainGames\Engine\ROUNDS_COUNT;
 function run(): void
 {
     $rounds = [];
-    $description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     for ($i = 0; $i < ROUNDS_COUNT; $i++) {
         $randomInteger = random_int(EVEN_MIN_FOR_RAND, EVEN_MAX_FOR_RAND);
@@ -38,7 +38,7 @@ function run(): void
         ];
     }
 
-    runGame($description, $rounds);
+    runGame(EVEN_DESCRIPTION, $rounds);
 }
 
 /**
