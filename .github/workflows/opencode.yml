@@ -30,4 +30,4 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         with:
-          model: openrouter/inclusionai/ling-3.0-flash:free
+          model: inclusionai/ling-3.0-flash:free
