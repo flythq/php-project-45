@@ -24,7 +24,13 @@ jobs:
         uses: actions/checkout@v6
         with:
           persist-credentials: false
-
+      - name: Check OpenRouter model
+        run: |
+          curl -s https://openrouter.ai/api/v1/models \
+            -H "Authorization: Bearer $OPENROUTER_API_KEY" |
+            jq -r '.data[] | select(.id == "inclusionai/ling-3.0-flash:free") | .id'
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
         env:
